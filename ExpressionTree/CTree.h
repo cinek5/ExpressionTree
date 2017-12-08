@@ -13,6 +13,7 @@ public:
 	void enterFormula(string formulaString);
 	void printTree();
 	void printVars();
+	double compute(int* vars);
 private:
 	CNode* root;
 	StringTokenizer stringTokenizer;
@@ -20,6 +21,8 @@ private:
 	map<string, int> variablesMap;
 	void addNewVariable(string& var);
 	void initMap();
+	bool setVariables(int* vars);
+
 
 };
 

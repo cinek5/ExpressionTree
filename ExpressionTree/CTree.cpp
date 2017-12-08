@@ -39,6 +39,12 @@ void CTree::printVars()
 	}
 }
 
+double CTree::compute(int * vars)
+{
+	setVariables(vars);
+	return root->compute(*this);
+}
+
 void CTree::addNewVariable(string& variable)
 {
 	if (variablesMap.find(variable) == variablesMap.end()) {
@@ -54,4 +60,15 @@ void CTree::initMap()
 	numOfArgsMap["sin"] = 1;
 	numOfArgsMap["cos"] = 1;
 	numOfArgsMap["*"] = 2;
+}
+
+bool CTree::setVariables(int* vars)
+{
+	int index = 0;
+	for (std::map<string, int>::iterator iter = variablesMap.begin(); iter != variablesMap.end(); ++iter)
+	{
+		iter->second = vars[index++];
+	}
+
+	return true;
 }

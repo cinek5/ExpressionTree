@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "CNode.h"
 #include "helperfunctions.h"
+#include <math.h> 
+
 
 
 CNode::CNode()
@@ -68,4 +70,50 @@ void CNode::printNode()
 	for (int i = 0; i < children.size(); i++) {
 		children[i]->printNode();
 	}
+}
+
+double CNode::compute(CTree & ctree)
+{
+	if (isConst) return stoi(this->value);
+	else if (getVariableValue(ctree)!=COMPUTE_ERROR){
+		return getVariableValue(ctree);
+	}
+	else {
+		return computeOperand(ctree);
+		
+
+	}
+	
+}
+
+int CNode::getVariableValue(CTree & ctree) 
+{
+	if (ctree.variablesMap.find(this->value) != ctree.variablesMap.end()) {
+		return ctree.variablesMap[this->value];
+	}
+
+	return COMPUTE_ERROR;
+}
+
+double CNode::computeOperand(CTree & ctree) // return -1 if error
+{
+	if (value == "+") {
+		return children[0]->compute(ctree) + children[1]->compute(ctree);
+	}
+	else if (value == "-") {
+		return children[0]->compute(ctree) - children[1]->compute(ctree);
+	}
+	else if (value == "*") {
+		return children[0]->compute(ctree) * children[1]->compute(ctree);
+	}
+	else if (value == "/") {
+		return children[0]->compute(ctree) / children[1]->compute(ctree);
+	}
+	else if (value == "sin") {
+		return sin(children[0]->compute(ctree));
+	}
+	else if (value == "cos") {
+		return cos(children[0]->compute(ctree));
+	}
+	return COMPUTE_ERROR;
 }
