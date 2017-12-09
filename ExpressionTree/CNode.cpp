@@ -11,6 +11,15 @@ CNode::CNode()
 	isConst = false;
 }
 
+CNode::CNode(CNode & other)
+{
+	this->value = other.value;
+	this->isConst = other.isConst;
+	for (int i = 0; i < other.children.size(); i++) {
+		this->children.push_back(new CNode(*other.children[i]));
+	}
+}
+
 
 CNode::~CNode()
 {
@@ -85,6 +94,34 @@ double CNode::compute(CTree & ctree)
 	}
 	
 }
+
+CNode* CNode::swapLeaf(CNode* node)
+{
+	if (this->children[0]->children.size() == 0) {
+		CNode* toBeSwapped = this->children[0];
+		this->children[0] = node;
+		return toBeSwapped;
+	}
+}
+
+
+bool CNode::isConstant()
+{
+	return isConst;
+}
+
+string CNode::getValue()
+{
+	return value;
+}
+
+bool CNode::hasNoChildren()
+{
+	return children.size() == 0;
+}
+
+
+
 
 int CNode::getVariableValue(CTree & ctree) 
 {

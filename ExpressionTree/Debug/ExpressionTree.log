@@ -1,2 +1,8 @@
-﻿  ExpressionTree.cpp
+﻿  CTree.cpp
+  CNode.cpp
+c:\users\cinek\source\repos\expressiontree\expressiontree\cnode.cpp(18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\cinek\source\repos\expressiontree\expressiontree\cnode.cpp(26): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\cinek\source\repos\expressiontree\expressiontree\cnode.cpp(79): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Generowanie kodu...
+c:\users\cinek\source\repos\expressiontree\expressiontree\cnode.cpp(105): warning C4715: "CNode::swapLeaf”: niewszystkie ścieżki kodu zwracają wartość
   ExpressionTree.vcxproj -> C:\Users\Cinek\source\repos\ExpressionTree\Debug\ExpressionTree.exe

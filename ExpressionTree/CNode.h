@@ -8,10 +8,15 @@ class CNode
 {
 public:
 	CNode();
+	CNode(CNode& other);
 	~CNode();
 	void parseString(CTree& ctree);
 	void printNode();
 	double compute(CTree& ctree);
+	bool isConstant();
+	CNode* swapLeaf(CNode* node);
+	string getValue();
+	bool hasNoChildren();
 private:
 	int getVariableValue(CTree& ctree);
 	bool isConst;

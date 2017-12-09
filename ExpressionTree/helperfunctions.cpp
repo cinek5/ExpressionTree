@@ -28,3 +28,26 @@ string trim(const string& str)
 	return str.substr(first, (last - first + 1));
 }
 
+map<string, int> copyDict(map<string, int>& other)
+{
+	map<string, int> newMap;
+	for (std::map<string, int>::iterator iter = other.begin(); iter != other.end(); ++iter)
+	{
+		newMap[iter->first] = iter->second;
+	}
+	return newMap;
+}
+
+void removeElementFromDict(map<string, int>& map,string& keyStr)
+{
+	bool deleted = false;
+	for (std::map<string, int>::iterator it = map.begin(); it != map.end()&& !deleted; it++)
+	{
+		if ((it->first) == keyStr)
+		{
+			map.erase(it);
+			deleted = true;
+		}
+	}
+}
+

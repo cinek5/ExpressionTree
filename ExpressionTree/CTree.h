@@ -9,11 +9,14 @@ class CTree
 	friend class CNode;
 public:
 	CTree();
+	CTree(CTree& other);
 	~CTree();
 	void enterFormula(string formulaString);
 	void printTree();
 	void printVars();
 	double compute(int* vars);
+	int getNumberOfVariables();
+	CTree operator+ (CTree& other);
 private:
 	CNode* root;
 	StringTokenizer stringTokenizer;
