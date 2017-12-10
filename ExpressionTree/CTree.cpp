@@ -6,14 +6,13 @@
 
 CTree::CTree()
 {
+	isFormulaEntered = false;
 	initMap();
 }
 
 CTree::CTree(CTree & other)
 {
-	this->root = new CNode(*other.root);
-	this->variablesMap = copyDict(other.variablesMap);
-	this->numOfArgsMap = copyDict(other.numOfArgsMap);
+	copy(other);
 
 
 }
@@ -31,11 +30,13 @@ void CTree::enterFormula(string formulaString)
 	stringTokenizer.setNewString(formulaString);
 	root = new CNode();
 	root->parseString(*this);
+	isFormulaEntered = true;
 }
 
 void CTree::printTree()
 {
 	root->printNode();
+	cout << endl;
 	
 }
 
@@ -92,6 +93,17 @@ CTree CTree::operator+(CTree & other)
 	return result;
 }
 
+void CTree::operator=(CTree & other)
+{
+	if (isFormulaBeenEntered()) delete root;
+	copy(other);
+}
+
+bool CTree::isFormulaBeenEntered()
+{
+	return isFormulaEntered;
+}
+
 void CTree::addNewVariable(string& variable)
 {
 	if (variablesMap.find(variable) == variablesMap.end()) {
@@ -119,4 +131,12 @@ bool CTree::setVariables(int* vars)
 	}
 
 	return true;
+}
+
+void CTree::copy(CTree& other)
+{
+	this->root = new CNode(*other.root);
+	this->variablesMap = copyDict(other.variablesMap);
+	this->numOfArgsMap = copyDict(other.numOfArgsMap);
+	this->isFormulaEntered = other.isFormulaEntered;
 }

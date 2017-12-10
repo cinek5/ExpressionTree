@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "helperfunctions.h"
-
 bool isDigit(string & s)
 {
 	std::string::const_iterator it = s.begin();
@@ -41,12 +40,16 @@ map<string, int> copyDict(map<string, int>& other)
 void removeElementFromDict(map<string, int>& map,string& keyStr)
 {
 	bool deleted = false;
-	for (std::map<string, int>::iterator it = map.begin(); it != map.end()&& !deleted; it++)
+	std::map<string, int>::iterator it;
+	for (it = map.begin(); it != map.end() && !deleted;)
 	{
 		if ((it->first) == keyStr)
 		{
-			map.erase(it);
+			map.erase(it++);
 			deleted = true;
+		}
+		else {
+			++it;
 		}
 	}
 }

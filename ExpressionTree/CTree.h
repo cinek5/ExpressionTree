@@ -17,14 +17,19 @@ public:
 	double compute(int* vars);
 	int getNumberOfVariables();
 	CTree operator+ (CTree& other);
+	void operator= (CTree& other);
+	bool isFormulaBeenEntered();
+	
 private:
 	CNode* root;
+	bool isFormulaEntered;
 	StringTokenizer stringTokenizer;
 	map<string, int> numOfArgsMap;
 	map<string, int> variablesMap;
 	void addNewVariable(string& var);
 	void initMap();
 	bool setVariables(int* vars);
+	void copy(CTree& other);
 
 
 };

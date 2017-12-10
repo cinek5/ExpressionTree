@@ -6,4 +6,4 @@ bool isDigit(string& str);
 bool isValidVariable(string& str);
 string trim(const string& str);
 map<string, int> copyDict(map<string, int>& other);
-void removeElementFromDict(map < string, int>& map,string& keyStr);
+void removeElementFromDict(map <string, int>& map,string& keyStr);
