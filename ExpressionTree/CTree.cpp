@@ -31,6 +31,8 @@ void CTree::enterFormula(string formulaString)
 	root = new CNode();
 	root->parseString(*this);
 	isFormulaEntered = true;
+	cout << "Formula processed:   ";
+	printTree();
 }
 
 void CTree::printTree()

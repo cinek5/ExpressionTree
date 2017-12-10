@@ -23,7 +23,7 @@ void UserInterface::v_handleSingleInput()
 		commandsMap["JOIN"] = 3;
 		commandsMap["COMP"] = 4;
 	
-		for (string::size_type i = 0; i < inputLine.length(); i++)
+		for (string::size_type i = 0; i < inputLine.length() && inputLine[i]!=' '; i++)
 		{
 			inputLine[i] = toupper(inputLine[i]);
 		}
